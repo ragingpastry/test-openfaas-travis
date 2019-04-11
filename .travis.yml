@@ -7,8 +7,4 @@ services:
   - docker
 
 before_install:
-  - docker swarm init
-  - git clone https://github.com/openfaas/faas
-  - cd faas
-  - ./deploy_stack.sh
-  - faas ls
+  - bash <(curl -s https://raw.githubusercontent.com/afcyber-dream/ansible-collection-pidev/master/bootstrap.sh) afcyber-dream/ansible-collection-pidev ubuntu1804/dockerswarm+openfaas
