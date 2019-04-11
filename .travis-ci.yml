@@ -1,0 +1,9 @@
+language: python
+
+services:
+  - docker
+
+before_install:
+  - git clone https://github.com/openfaas/faas
+  - cd faas
+  - ./deploy_stack.sh
