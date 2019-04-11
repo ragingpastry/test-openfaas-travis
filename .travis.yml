@@ -7,4 +7,11 @@ services:
   - docker
 
 before_install:
-  - bash <(curl -s https://raw.githubusercontent.com/afcyber-dream/ansible-collection-pidev/master/bootstrap.sh) afcyber-dream/ansible-collection-pidev ubuntu1804/dockerswarm+openfaas
+  - docker swarm init
+  - git clone https://github.com/openfaas/faas
+  - cd faas
+  - ./deploy_stack.sh
+  - curl -sL https://cli.openfaas.com | sudo sh
+  - git clone https://github.com/afcyber-dream/piedpiper-flake8-validator
+  - cd piedpiper-flake8-validator
+  - faas build && faas deploy
