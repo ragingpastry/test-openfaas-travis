@@ -7,7 +7,7 @@ fi
 openfaas_repository="https://github.com/openfaas/faas"
 
 function_repositories=(
-  pipedpiper-flake8-faas
+  piedpiper-flake8-faas
   piedpiper-validator-faas
   piedpiper-cpplint-faas
 )
