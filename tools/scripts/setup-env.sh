@@ -20,7 +20,7 @@ git clone "${openfaas_repository}" .
 curl -sL https://cli.openfaas.com | sudo sh
 popd
 
-for repository in function_repositories; do
+for repository in "${function_repositories}"; do
   git clone https://github.com/afcyber-dream/"${repository}"
   pushd "${repository}"
   faas build && faas deploy
