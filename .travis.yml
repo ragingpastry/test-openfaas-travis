@@ -20,6 +20,7 @@ before_install:
   - faas build && faas deploy
   - cd ../piedpiper-cpplint-faas
   - faas build && faas deploy
+  - cd ../
   - pip install --upgrade pip
 
 install: python setup.py install
