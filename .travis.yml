@@ -1,7 +1,6 @@
 dist: xenial
 language: python
-python:
-  - 3.7
+python: 3.7
 
 services:
   - docker
@@ -13,5 +12,16 @@ before_install:
   - ./deploy_stack.sh --no-auth
   - curl -sL https://cli.openfaas.com | sudo sh
   - git clone https://github.com/afcyber-dream/piedpiper-flake8-faas
+  - git clone https://github.com/afcyber-dream/piedpiper-validator-faas
+  - git clone https://github.com/afcyber-dream/piedpiper-cpplint-faas
   - cd piedpiper-flake8-faas
   - faas build && faas deploy
+  - cd ../piedpiper-validator-faas
+  - faas build && faas deploy
+  - cd ../piedpiper-cpplint-faas
+  - faas build && faas deploy
+  - pip install --upgrade pip
+
+install: python setup.py install
+
+script: tox -e functional
