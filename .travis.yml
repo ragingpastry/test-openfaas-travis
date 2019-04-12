@@ -6,23 +6,4 @@ services:
   - docker
 
 before_install:
-  - docker swarm init
-  - git clone https://github.com/openfaas/faas
-  - cd faas
-  - ./deploy_stack.sh --no-auth
-  - curl -sL https://cli.openfaas.com | sudo sh
-  - git clone https://github.com/afcyber-dream/piedpiper-flake8-faas
-  - git clone https://github.com/afcyber-dream/piedpiper-validator-faas
-  - git clone https://github.com/afcyber-dream/piedpiper-cpplint-faas
-  - cd piedpiper-flake8-faas
-  - faas build && faas deploy
-  - cd ../piedpiper-validator-faas
-  - faas build && faas deploy
-  - cd ../piedpiper-cpplint-faas
-  - faas build && faas deploy
-  - cd ../
-  - pip install --upgrade pip
-
-install: python setup.py install
-
-script: tox -e functional
+  - tools/scripts/setup-env.sh
